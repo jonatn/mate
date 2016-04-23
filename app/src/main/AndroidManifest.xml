@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.erdem.mate">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <application
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Mate"
+        android:logo="@drawable/mate_logo_white"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/DefaultTheme">
+        <activity
+            android:name=".InitialActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/InitialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GPSPermission"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginScreenActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ProfilePicture"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+
+    </application>
+
+</manifest>

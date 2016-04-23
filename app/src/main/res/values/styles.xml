@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="InitialTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#333333</item>
+        <item name="colorPrimaryDark">#333333</item>
+        <item name="colorAccent">#f2f2f2</item>
+    </style>
+
+    <style name="DefaultTheme" parent="Theme.AppCompat">
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#f2f2f2</item>
+
+    </style>
+
+    <style name="ChatTheme" parent="android:Theme.NoTitleBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+
+</resources>

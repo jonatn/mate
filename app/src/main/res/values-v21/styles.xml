@@ -1,0 +1,18 @@
+    <resources>
+        <style name="InitialTheme" parent="Theme.AppCompat.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">#333333</item>
+            <item name="colorPrimaryDark">#333333</item>
+            <item name="colorAccent">@color/colorAccent</item>
+            <item name="android:navigationBarColor">#333333</item>
+        </style>
+
+    <style name="DefaultTheme" parent="Theme.AppCompat">
+    <item name="colorPrimary">#000000</item>
+    <item name="colorPrimaryDark">#000000</item>
+    <item name="colorAccent">#f2f2f2</item>
+        <item name="android:navigationBarColor">#333333</item>
+    <item name="android:logo">@mipmap/ic_launcher</item>
+    <item name="android:displayOptions">useLogo</item>
+    </style>
+    </resources>
