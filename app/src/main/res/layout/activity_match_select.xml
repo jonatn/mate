@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#333333"
+    tools:context="com.android.erdem.mate.MatchSelectActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Which gender you want to be matched with?"
+        android:textColor="#c8c8c8"
+        android:layout_marginTop="140dp"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="50dp"
+        android:text="female"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="#4a4a4a"
+        android:ems="11"
+        android:id="@+id/matchselect_female"
+        android:layout_gravity="center_horizontal"
+        android:elegantTextHeight="false"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="30dp"
+        android:text="male"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="#4a4a4a"
+        android:ems="11"
+        android:id="@+id/matchselect_male"
+        android:layout_gravity="center_horizontal"
+        android:elegantTextHeight="false"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="30dp"
+        android:text="unspecified"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="#4a4a4a"
+        android:ems="11"
+        android:id="@+id/matchselect_unspecified"
+        android:layout_gravity="center_horizontal"
+        android:elegantTextHeight="false"
+        android:textAlignment="center" />
+
+</LinearLayout>
