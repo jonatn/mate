@@ -29,7 +29,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:layout_gravity="center_horizontal"
-        android:contextClickable="false" />
+        android:contextClickable="false"
+        android:paddingLeft="25dp" />
 
     <EditText
         android:layout_width="349dp"
@@ -46,7 +47,8 @@
         android:ems="13"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:paddingLeft="25dp" />
 
     <CheckBox
         android:layout_width="wrap_content"

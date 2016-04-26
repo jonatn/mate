@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.erdem.mate">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -10,13 +10,12 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="Mate"
+        android:largeHeap="true"
         android:logo="@drawable/mate_logo_white"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
@@ -40,11 +39,17 @@
         <activity
             android:name=".LoginScreenActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ProfilePicture"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".ProfilePicture"
+            android:screenOrientation="portrait" />
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-
+        <activity
+            android:name=".MatchActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MatchSelectActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CardgameActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
