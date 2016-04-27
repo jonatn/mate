@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class GPSPermission extends AppCompatActivity {
+public class GPSPermission extends AppCompatActivity{
 
    private TextView allow, skipnow;
 
@@ -34,5 +34,16 @@ public class GPSPermission extends AppCompatActivity {
                                       }
                                   }
         );
+
+        skipnow.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GPSPermission.this, MatchSelectActivity.class);
+                startActivity(i);
+            }
+        });
     }
+
+
 }

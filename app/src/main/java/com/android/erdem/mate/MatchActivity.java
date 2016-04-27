@@ -1,9 +1,11 @@
 package com.android.erdem.mate;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,5 +33,17 @@ public class MatchActivity extends AppCompatActivity {
         image4 = (ImageView)findViewById(R.id.matchactivity_profile_image4);
 
         //need to add images from server also instead of empty images to here
+
+        match.setOnClickListener(new View.OnClickListener()
+                                 {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Intent i = new Intent(MatchActivity.this, CardgameActivity.class);
+                                         startActivity(i);
+                                     }
+                                 }
+        );
     }
+
+
 }
