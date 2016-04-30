@@ -12,10 +12,9 @@
     android:orientation="vertical">
 
     <ImageView
-
-        android:layout_width="302dp"
-        android:layout_height="315dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="220dp"
+        android:layout_height="229dp"
         android:id="@+id/profilepicture_picture"
         android:src="@drawable/avatar"
         android:adjustViewBounds="true"
@@ -25,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="100dp"
         android:textColor="#c8c8c8"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Take a profile picture"
