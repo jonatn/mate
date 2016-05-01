@@ -1,14 +1,12 @@
 package com.android.erdem.mate;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
 
-public class MatchSelectActivity extends AppCompatActivity  implements View.OnClickListener {
+public class MatchSelectActivity extends AppCompatActivity {
 
     private TextView female, male, unspecified;
 
@@ -27,17 +25,7 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
         female = (TextView)findViewById(R.id.matchselect_female);
         male = (TextView)findViewById(R.id.matchselect_male);
         unspecified = (TextView)findViewById(R.id.matchselect_unspecified);
-
-        female.setOnClickListener(this);
-        male.setOnClickListener(this);
-        unspecified.setOnClickListener(this);
     }
 
 
-    @Override
-    public void onClick(View v) {
-
-                                         Intent i = new Intent(MatchSelectActivity.this, MatchActivity.class);
-                                         startActivity(i);
-    }
 }
