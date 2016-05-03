@@ -46,10 +46,13 @@
         <activity
             android:name=".MatchActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MatchSelectActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CardgameActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".MatchSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardgameActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".WaitActivity"></activity>
     </application>
 
 </manifest>
