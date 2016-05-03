@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/lyt_container"
+    android:background="#333333">
+<!--Actual list(question/answer)-->
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:padding="30dp"
+                android:text="Answer"
+                android:background="#000000"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:id="@+id/txt_data"
+                android:layout_alignParentTop="true"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/cardgame_arrow"
+            android:src="@drawable/cards_arrow"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+    <!--Layout which contains texts which are visible after a swipe,
+    invisible by default, after swipe gets visible-->
+    <!--The box which appears after swipe-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="3"
+        android:background="#C6C6C6"
+        android:height="80dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/txt_selected"
+            android:gravity="center_vertical"
+            android:text="Selected"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:clickable="false"
+            android:layout_weight="2"
+            android:hapticFeedbackEnabled="true"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/txt_undo"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:text="Cancel"
+            android:clickable="false"
+            android:layout_weight="1"
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>
