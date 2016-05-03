@@ -1,5 +1,6 @@
 package com.android.erdem.mate;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 
 import com.android.erdem.mate.adapter.RecyclerViewAdapter;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,7 @@ public class CardgameActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private ImageView arrow;
+    private TextView question;
     // private ImageView avatar;
 
     private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 3000;
@@ -51,6 +55,25 @@ public class CardgameActivity extends AppCompatActivity {
 
         //  avatar = (ImageView)findViewById(R.id.avatar);
         arrow = (ImageView)findViewById(R.id.cardgame_arrow);
+
+        question = (TextView) findViewById(R.id.question);
+        try {
+            question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
+        String message;
+        if(ProfileInfo.isQuestioner)
+            message = "Congratulations! You're questioner";
+        else
+            message = "You're answerer";
+
+        builder.setMessage(message)
+                .setNegativeButton("Continue", null)
+                .create()
+                .show();
     }
 
 
@@ -114,10 +137,22 @@ public class CardgameActivity extends AppCompatActivity {
     }
 
 
-    private void init(RecyclerView recyclerView) {
+    private void init(final RecyclerView recyclerView) {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         final MyBaseAdapter adapter = new MyBaseAdapter();
+
+        try {
+            //question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
+            adapter.mDataSet.add(0, ProfileInfo.answers1.getString(ProfileInfo.questionnr));
+            adapter.mDataSet.add(1, ProfileInfo.answers2.getString(ProfileInfo.questionnr));
+            adapter.mDataSet.add(2, ProfileInfo.answers3.getString(ProfileInfo.questionnr));
+            adapter.mDataSet.add(3, ProfileInfo.answers4.getString(ProfileInfo.questionnr));
+            recyclerView.setAdapter(adapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         recyclerView.setAdapter(adapter);
         final SwipeToDismissTouchListener<RecyclerViewAdapter> touchListener =
                 new SwipeToDismissTouchListener<>(
@@ -137,8 +172,26 @@ public class CardgameActivity extends AppCompatActivity {
                             public void onDismiss(RecyclerViewAdapter view, int position) {
                                 //adapter.remove(position);
                                 //Add new question/answer information here !!!
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
 
+                                /*builder.setMessage("CHANGE QUESTION")
+                                        .setNegativeButton("Continue", null)
+                                        .create()
+                                        .show();*/
 
+                                ProfileInfo.questionnr++;
+                                adapter.mDataSet.clear();
+                                try {
+                                    question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
+                                    adapter.mDataSet.add(0, ProfileInfo.answers1.getString(ProfileInfo.questionnr));
+                                    adapter.mDataSet.add(1, ProfileInfo.answers2.getString(ProfileInfo.questionnr));
+                                    adapter.mDataSet.add(2, ProfileInfo.answers3.getString(ProfileInfo.questionnr));
+                                    adapter.mDataSet.add(3, ProfileInfo.answers4.getString(ProfileInfo.questionnr));
+                                    recyclerView.setAdapter(adapter);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
         touchListener.setDismissDelay(TIME_TO_AUTOMATICALLY_DISMISS_ITEM);
@@ -167,8 +220,8 @@ public class CardgameActivity extends AppCompatActivity {
         private final List<String> mDataSet = new ArrayList<>();
 
         MyBaseAdapter() {
-            for (int i = 0; i < SIZE; i++)
-                mDataSet.add(i, "Answer " + i);
+            /*for (int i = 0; i < SIZE; i++)
+                mDataSet.add(i, "Answer " + i);*/
         }
 
         @Override

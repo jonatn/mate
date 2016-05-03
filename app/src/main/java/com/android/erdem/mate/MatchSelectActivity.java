@@ -76,19 +76,16 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
 
                         ProfileInfo.quizID = jsonResponse.getInt("quizid");
                         ProfileInfo.isQuestioner = jsonResponse.getBoolean("isquestioner");
-                        String str = jsonResponse.getJSONArray("answers4").getString(3);
+                        ProfileInfo.questions = jsonResponse.getJSONArray("questions");
+                        ProfileInfo.answers1 = jsonResponse.getJSONArray("answers1");
+                        ProfileInfo.answers2 = jsonResponse.getJSONArray("answers2");
+                        ProfileInfo.answers3 = jsonResponse.getJSONArray("answers3");
+                        ProfileInfo.answers4 = jsonResponse.getJSONArray("answers4");
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MatchSelectActivity.this);
-                        String message;
-                        if(ProfileInfo.isQuestioner)
-                            message = "Congratulations! You're questioner" + str;
-                        else
-                            message = "You're answerer";
+                        ProfileInfo.questionnr=0;
 
-                        builder.setMessage(message)
-                                .setNegativeButton("Continue", null)
-                                .create()
-                                .show();
+
+
 
                         Intent intent = new Intent(MatchSelectActivity.this, CardgameActivity.class);
 
