@@ -78,9 +78,12 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                                                                if (success) {
 
-
+                                                                   ProfileInfo.id = jsonResponse.getInt("userid");
                                                                    String name = jsonResponse.getString("username");
                                                                    int age = jsonResponse.getInt("age");
+                                                                   ProfileInfo.username = name;
+                                                                   ProfileInfo.age = age;
+                                                                   ProfileInfo.sex = jsonResponse.getString("sex");
 
                                                                    Toast.makeText(LoginScreenActivity.this, "Welcome " + name + "!", Toast.LENGTH_LONG).show();
 
@@ -100,7 +103,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                                                            } catch (JSONException e) {
                                                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginScreenActivity.this);
-                                                               builder.setMessage("Server Connection Failed. Have another try or contact developer.")
+                                                               builder.setMessage("Server Connection Failed. Have another try or contact developer." + ProfileInfo.id)
                                                                        .setNegativeButton("Okay", null)
                                                                        .create()
                                                                        .show();

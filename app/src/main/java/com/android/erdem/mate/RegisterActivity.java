@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                    final String strUsername = username.getText().toString();
                                                    final String strMail = emailaddress.getText().toString();
                                                    final String strPassword = password.getText().toString();
-                                                   final String strSex = sex.getText().toString();
+                                                   final String strSex = sex.getText().toString().toLowerCase();
                                                    final int iAge = Integer.parseInt(age.getText().toString());
 
                                                    Intent intent = new Intent(RegisterActivity.this, ProfilePicture.class);

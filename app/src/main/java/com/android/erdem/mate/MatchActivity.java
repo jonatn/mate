@@ -46,7 +46,8 @@ public class MatchActivity extends AppCompatActivity {
                                  {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i = new Intent(MatchActivity.this, CardgameActivity.class);
+
+                                         Intent i = new Intent(MatchActivity.this, MatchActivity.class);
                                          startActivity(i);
                                      }
                                  }
