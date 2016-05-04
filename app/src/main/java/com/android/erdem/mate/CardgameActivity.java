@@ -2,6 +2,7 @@ package com.android.erdem.mate;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -180,6 +181,10 @@ public class CardgameActivity extends AppCompatActivity {
                                         .show();*/
 
                                 ProfileInfo.questionnr++;
+                                if(ProfileInfo.questionnr >= 5) {
+                                    Intent intent = new Intent(CardgameActivity.this, WaitActivity.class);
+                                    CardgameActivity.this.startActivity(intent);
+                                }
                                 adapter.mDataSet.clear();
                                 try {
                                     question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
