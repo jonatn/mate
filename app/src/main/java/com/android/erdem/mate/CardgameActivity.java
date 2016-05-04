@@ -44,7 +44,7 @@ public class CardgameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardgame);
         mRecyclerView = (RecyclerView)findViewById(R.id.recycleview);
-        mRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(100));
+        mRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(10));
         init(mRecyclerView);
 
         ActionBar actionBar = getSupportActionBar();
