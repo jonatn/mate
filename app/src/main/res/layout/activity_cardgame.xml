@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
         android:paddingBottom="50dp"
         android:paddingTop="50dp"
         android:textSize="25sp"
