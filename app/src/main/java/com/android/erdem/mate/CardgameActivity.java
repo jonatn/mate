@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.android.erdem.mate.adapter.RecyclerViewAdapter;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
@@ -39,11 +40,20 @@ public class CardgameActivity extends AppCompatActivity {
 
     private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 3000;
 
+    private String getEntry(JSONArray arr, int index) {
+        try {
+            return arr.getString(ProfileInfo.questionnr).replaceAll("(\\r|\\n)", "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "Error while extracting JSON.";
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardgame);
-        mRecyclerView = (RecyclerView)findViewById(R.id.recycleview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
         mRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(3));
         init(mRecyclerView);
 
@@ -55,18 +65,16 @@ public class CardgameActivity extends AppCompatActivity {
 
 
         //  avatar = (ImageView)findViewById(R.id.avatar);
-        arrow = (ImageView)findViewById(R.id.cardgame_arrow);
+        arrow = (ImageView) findViewById(R.id.cardgame_arrow);
 
         question = (TextView) findViewById(R.id.question);
-        try {
-            question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+        question.setText(this.getEntry(ProfileInfo.questions, ProfileInfo.questionnr));
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
         String message;
-        if(ProfileInfo.isQuestioner)
+        if (ProfileInfo.isQuestioner)
             message = "Congratulations! You're questioner";
         else
             message = "You're answerer";
@@ -143,17 +151,13 @@ public class CardgameActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         final MyBaseAdapter adapter = new MyBaseAdapter();
 
-        try {
-            //question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
-            adapter.mDataSet.add(0, ProfileInfo.answers1.getString(ProfileInfo.questionnr));
-            adapter.mDataSet.add(1, ProfileInfo.answers2.getString(ProfileInfo.questionnr));
-            adapter.mDataSet.add(2, ProfileInfo.answers3.getString(ProfileInfo.questionnr));
-            adapter.mDataSet.add(3, ProfileInfo.answers4.getString(ProfileInfo.questionnr));
-            recyclerView.setAdapter(adapter);
+        //question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
+        adapter.mDataSet.add(0, this.getEntry(ProfileInfo.answers1, ProfileInfo.questionnr));
+        adapter.mDataSet.add(1, this.getEntry(ProfileInfo.answers2, ProfileInfo.questionnr));
+        adapter.mDataSet.add(2, this.getEntry(ProfileInfo.answers3, ProfileInfo.questionnr));
+        adapter.mDataSet.add(3, this.getEntry(ProfileInfo.answers4, ProfileInfo.questionnr));
+        recyclerView.setAdapter(adapter);
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         recyclerView.setAdapter(adapter);
         final SwipeToDismissTouchListener<RecyclerViewAdapter> touchListener =
                 new SwipeToDismissTouchListener<>(
@@ -181,22 +185,18 @@ public class CardgameActivity extends AppCompatActivity {
                                         .show();*/
 
                                 ProfileInfo.questionnr++;
-                                if(ProfileInfo.questionnr >= 5) {
+                                if (ProfileInfo.questionnr >= 5) {
                                     Intent intent = new Intent(CardgameActivity.this, WaitActivity.class);
                                     CardgameActivity.this.startActivity(intent);
                                 }
                                 adapter.mDataSet.clear();
-                                try {
-                                    question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
-                                    adapter.mDataSet.add(0, ProfileInfo.answers1.getString(ProfileInfo.questionnr));
-                                    adapter.mDataSet.add(1, ProfileInfo.answers2.getString(ProfileInfo.questionnr));
-                                    adapter.mDataSet.add(2, ProfileInfo.answers3.getString(ProfileInfo.questionnr));
-                                    adapter.mDataSet.add(3, ProfileInfo.answers4.getString(ProfileInfo.questionnr));
-                                    recyclerView.setAdapter(adapter);
 
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                                question.setText(getEntry(ProfileInfo.questions, ProfileInfo.questionnr));
+                                adapter.mDataSet.add(0, getEntry(ProfileInfo.answers1, ProfileInfo.questionnr));
+                                adapter.mDataSet.add(1, getEntry(ProfileInfo.answers2, ProfileInfo.questionnr));
+                                adapter.mDataSet.add(2, getEntry(ProfileInfo.answers3, ProfileInfo.questionnr));
+                                adapter.mDataSet.add(3, getEntry(ProfileInfo.answers4, ProfileInfo.questionnr));
+                                recyclerView.setAdapter(adapter);
                             }
                         });
         touchListener.setDismissDelay(TIME_TO_AUTOMATICALLY_DISMISS_ITEM);
@@ -213,11 +213,12 @@ public class CardgameActivity extends AppCompatActivity {
                         } else if (view.getId() == R.id.txt_undo) {
                             touchListener.undoPendingDismiss();
                         } else { // R.id.txt_data
-                        //    Toast.makeText(CardgameActivity.this, "Example " + position, LENGTH_SHORT).show();
+                            //    Toast.makeText(CardgameActivity.this, "Example " + position, LENGTH_SHORT).show();
                         }
                     }
                 }));
     }
+
     static class MyBaseAdapter extends RecyclerView.Adapter<MyBaseAdapter.MyViewHolder> {
 
         private static final int SIZE = 4;
@@ -253,6 +254,7 @@ public class CardgameActivity extends AppCompatActivity {
         static class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView dataTextView;
+
             MyViewHolder(View view) {
                 super(view);
                 dataTextView = (TextView) view.findViewById(R.id.txt_data);
