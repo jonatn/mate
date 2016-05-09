@@ -24,4 +24,7 @@ public class ProfileInfo {
     public static JSONArray selectedAnswersID;
 
     public static int questionnr;
+
+    public static String partnerName;
+    public static Bitmap partnerImage;
 }
