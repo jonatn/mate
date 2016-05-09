@@ -86,15 +86,15 @@ public class LoginScreenActivity extends AppCompatActivity {
                                                           ProfileInfo.age = age;
                                                           ProfileInfo.sex = jsonResponse.getString("sex");
 
-                                                          String strImage = jsonResponse.getString("image");
+                                                          /*String strImage = jsonResponse.getString("image");
                                                           byte[] imageBytes = Base64.decode(strImage, Base64.DEFAULT);
-                                                          ProfileInfo.image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
+                                                          ProfileInfo.image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);*/
 
                                                                   Toast.makeText(LoginScreenActivity.this, "Welcome " + name + "!", Toast.LENGTH_LONG).show();
 
                                                           // FOR SIMULATING NOTIF. JUST ENABLE COMMAND AND GO TO WAIT SCREEN
-                                                          // ProfileInfo.quizID = 125;
-                                                          Intent intent = new Intent(LoginScreenActivity.this, GPSPermission.class);
+                                                          ProfileInfo.quizID = 125;
+                                                          Intent intent = new Intent(LoginScreenActivity.this, WaitActivity.class);
 
                                                           // intent.putExtra("name", name);
                                                           // intent.putExtra("age", age);

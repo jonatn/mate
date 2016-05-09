@@ -8,6 +8,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,6 +16,7 @@ import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
+import android.util.Base64;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -61,7 +63,7 @@ public class WaitActivity extends AppCompatActivity {
                         .create()
                         .show();
 
-                Intent intent = new Intent(WaitActivity.this, LoginScreenActivity.class);
+                Intent intent = new Intent(WaitActivity.this, MatchedWith.class);
 
                 // use System.currentTimeMillis() to have a unique ID for the pending intent
                 PendingIntent pi = PendingIntent.getActivity(WaitActivity.this, 0, intent, 0);
@@ -117,6 +119,12 @@ public class WaitActivity extends AppCompatActivity {
                     String dateString =
                             dateformat.format(new Date());*/
                                 if(isFinished) {
+
+                                    ProfileInfo.partnerName = jsonResponse.getString("name");
+                                    String strImage = jsonResponse.getString("image");
+
+                                    byte[] imageBytes = Base64.decode(strImage, Base64.DEFAULT);
+                                    ProfileInfo.partnerImage = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
 
                                     bundle.putString("myKey", "JUST A TEST");
                                     msg.setData(bundle);
