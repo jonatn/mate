@@ -10,22 +10,13 @@
     tools:context="com.android.erdem.mate.WaitActivity"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="346dp"
-        android:layout_height="106dp"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="60dp"
-        android:layout_gravity="center"
-        android:src="@drawable/mate_logo_white"
-        android:id="@+id/imageView"
-        android:cropToPadding="false" />
-
     <TextView
-        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Please wait while your mates are answering, you will be notified."
+        android:text="Please wait for your mates."
         android:lineSpacingMultiplier="1.2"
         android:id="@+id/textView"
         android:layout_centerVertical="true"
