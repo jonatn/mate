@@ -52,10 +52,13 @@
         <activity
             android:name=".CardgameActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".WaitActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AnswererQuestionerActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".WaitActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AnswererQuestionerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MatchedWith"></activity>
     </application>
 
 </manifest>
