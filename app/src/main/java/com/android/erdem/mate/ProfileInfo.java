@@ -18,7 +18,10 @@ public class ProfileInfo {
     public static int quizID;
     public static boolean isQuestioner;
 
+    public static JSONArray questionsID, answers1ID, answers2ID, answers3ID, answers4ID;
     public static JSONArray questions, answers1, answers2, answers3, answers4;
+
+    public static JSONArray selectedAnswersID;
 
     public static int questionnr;
 }

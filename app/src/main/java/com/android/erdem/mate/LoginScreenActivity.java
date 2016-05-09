@@ -87,6 +87,8 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                                                                    Toast.makeText(LoginScreenActivity.this, "Welcome " + name + "!", Toast.LENGTH_LONG).show();
 
+                                                                   // FOR SIMULATING NOTIF. JUST ENABLE COMMAND AND GO TO WAIT SCREEN
+                                                                   // ProfileInfo.quizID = 125;
                                                                    Intent intent = new Intent(LoginScreenActivity.this, GPSPermission.class);
 
                                                                    // intent.putExtra("name", name);

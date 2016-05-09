@@ -53,6 +53,7 @@
             android:name=".CardgameActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".WaitActivity"></activity>
+        <activity android:name=".AndroidThreadNotification"></activity>
     </application>
 
 </manifest>

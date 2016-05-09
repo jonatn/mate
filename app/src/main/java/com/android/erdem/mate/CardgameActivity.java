@@ -18,18 +18,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.erdem.mate.adapter.RecyclerViewAdapter;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.view.View.INVISIBLE;
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class CardgameActivity extends AppCompatActivity {
 
@@ -46,6 +46,32 @@ public class CardgameActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
             return "Error while extracting JSON.";
+        }
+    }
+
+    private int getAnswerID(int questionNr, int answerPosition) {
+        JSONArray selected;
+        switch (answerPosition) {
+            case 0:
+                selected = ProfileInfo.answers1ID;
+                break;
+            case 1:
+                selected = ProfileInfo.answers2ID;
+                break;
+            case 2:
+                selected = ProfileInfo.answers3ID;
+                break;
+            case 3:
+                selected = ProfileInfo.answers4ID;
+                break;
+            default:
+                return 0;
+        }
+        try {
+            return selected.getInt(questionNr);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 
@@ -151,6 +177,8 @@ public class CardgameActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         final MyBaseAdapter adapter = new MyBaseAdapter();
 
+        ProfileInfo.selectedAnswersID = new JSONArray();
+
         //question.setText(ProfileInfo.questions.getString(ProfileInfo.questionnr));
         adapter.mDataSet.add(0, this.getEntry(ProfileInfo.answers1, ProfileInfo.questionnr));
         adapter.mDataSet.add(1, this.getEntry(ProfileInfo.answers2, ProfileInfo.questionnr));
@@ -179,15 +207,54 @@ public class CardgameActivity extends AppCompatActivity {
                                 //Add new question/answer information here !!!
                                 AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
 
-                                /*builder.setMessage("CHANGE QUESTION")
-                                        .setNegativeButton("Continue", null)
-                                        .create()
-                                        .show();*/
+                                ProfileInfo.selectedAnswersID.put(getAnswerID(ProfileInfo.questionnr, position));
+                                /*try {
+                                    builder.setMessage("SELECTED ANSWER: "+ ProfileInfo.selectedAnswersID.getInt(ProfileInfo.questionnr))
+                                            .setNegativeButton("Continue", null)
+                                            .create()
+                                            .show();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }*/
 
                                 ProfileInfo.questionnr++;
                                 if (ProfileInfo.questionnr >= 5) {
-                                    Intent intent = new Intent(CardgameActivity.this, WaitActivity.class);
-                                    CardgameActivity.this.startActivity(intent);
+                                    // Response received from the server
+                                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            try {
+                                                JSONObject jsonResponse = new JSONObject(response);
+                                                boolean success = jsonResponse.getBoolean("success");
+
+                                                if (success) {
+
+                                                    Intent intent = new Intent(CardgameActivity.this, WaitActivity.class);
+                                                    CardgameActivity.this.startActivity(intent);
+                                                } else {
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
+                                                    builder.setMessage("Fatal error. Please contact developer.")
+                                                            .setNegativeButton("Okay", null)
+                                                            .create()
+                                                            .show();
+                                                }
+
+                                            } catch (JSONException e) {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
+                                                builder.setMessage("Server Connection Failed. Have another try or contact developer.")
+                                                        .setNegativeButton("Okay", null)
+                                                        .create()
+                                                        .show();
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    };
+
+                                    SubmitAnswersRequest submitAnswersRequest = new SubmitAnswersRequest(ProfileInfo.quizID, ProfileInfo.id, ProfileInfo.questionsID, ProfileInfo.selectedAnswersID, responseListener);
+                                    RequestQueue queue = Volley.newRequestQueue(CardgameActivity.this);
+                                    queue.add(submitAnswersRequest);
+
+
                                 }
                                 adapter.mDataSet.clear();
 

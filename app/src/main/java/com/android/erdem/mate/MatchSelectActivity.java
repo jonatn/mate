@@ -1,6 +1,5 @@
 package com.android.erdem.mate;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -76,6 +74,11 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
 
                         ProfileInfo.quizID = jsonResponse.getInt("quizid");
                         ProfileInfo.isQuestioner = jsonResponse.getBoolean("isquestioner");
+                        ProfileInfo.questionsID = jsonResponse.getJSONArray("questionsid");
+                        ProfileInfo.answers1ID = jsonResponse.getJSONArray("answers1id");
+                        ProfileInfo.answers2ID = jsonResponse.getJSONArray("answers2id");
+                        ProfileInfo.answers3ID = jsonResponse.getJSONArray("answers3id");
+                        ProfileInfo.answers4ID = jsonResponse.getJSONArray("answers4id");
                         ProfileInfo.questions = jsonResponse.getJSONArray("questions");
                         ProfileInfo.answers1 = jsonResponse.getJSONArray("answers1");
                         ProfileInfo.answers2 = jsonResponse.getJSONArray("answers2");
