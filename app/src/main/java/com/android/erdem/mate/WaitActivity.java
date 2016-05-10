@@ -57,23 +57,27 @@ public class WaitActivity extends AppCompatActivity {
                 Bundle bundle = msg.getData();
                 String string = bundle.getString("myKey");
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(WaitActivity.this);
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(WaitActivity.this);
                 builder.setMessage("in handleMsg().")
                         .setNegativeButton("Okay", null)
                         .create()
-                        .show();
+                        .show();*/
 
-                Intent intent = new Intent(WaitActivity.this, MatchedWith.class);
+                Intent intent;
 
-                // use System.currentTimeMillis() to have a unique ID for the pending intent
-                PendingIntent pi = PendingIntent.getActivity(WaitActivity.this, 0, intent, 0);
+
 
                 String notific;
                 if (isMatched) {
                     notific = "YOU'RE MATCHED!!!";
+                    intent = new Intent(WaitActivity.this, MatchedWith.class);
                 } else {
                     notific = "Not Matched... Try your luck another time :)";
+                    intent = new Intent(WaitActivity.this, MatchSelectActivity.class);
                 }
+
+                // use System.currentTimeMillis() to have a unique ID for the pending intent
+                PendingIntent pi = PendingIntent.getActivity(WaitActivity.this, 0, intent, 0);
 
                 Resources r = getResources();
                 Notification notification = new NotificationCompat.Builder(WaitActivity.this)
@@ -88,11 +92,11 @@ public class WaitActivity extends AppCompatActivity {
                 NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 notificationManager.notify(0, notification);
 
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(WaitActivity.this);
+                /*AlertDialog.Builder builder2 = new AlertDialog.Builder(WaitActivity.this);
                 builder2.setMessage(string)
                         .setNegativeButton("Okay", null)
                         .create()
-                        .show();
+                        .show();*/
             }
         };
 
@@ -119,13 +123,13 @@ public class WaitActivity extends AppCompatActivity {
                     String dateString =
                             dateformat.format(new Date());*/
                                 if(isFinished) {
+                                    if(isMatched) {
+                                        ProfileInfo.partnerName = jsonResponse.getString("name");
+                                        String strImage = jsonResponse.getString("image");
 
-                                    ProfileInfo.partnerName = jsonResponse.getString("name");
-                                    String strImage = jsonResponse.getString("image");
-
-                                    byte[] imageBytes = Base64.decode(strImage, Base64.DEFAULT);
-                                    ProfileInfo.partnerImage = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
-
+                                        byte[] imageBytes = Base64.decode(strImage, Base64.DEFAULT);
+                                        ProfileInfo.partnerImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                                    }
                                     bundle.putString("myKey", "JUST A TEST");
                                     msg.setData(bundle);
                                     handler.sendMessage(msg);

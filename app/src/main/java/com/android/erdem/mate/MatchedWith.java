@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MatchedWith extends AppCompatActivity {
 
@@ -20,5 +21,8 @@ public class MatchedWith extends AppCompatActivity {
 
         ImageView profilepicture =(ImageView)findViewById(R.id.imageView3);
         profilepicture.setImageBitmap(ProfileInfo.partnerImage);
+
+        TextView textView = (TextView)findViewById(R.id.textView5);
+        textView.setText("You got matched with " + ProfileInfo.partnerName + "!");
     }
 }
