@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:hardwareAccelerated="false"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Mate"
         android:largeHeap="true"
@@ -58,7 +58,9 @@
         <activity
             android:name=".AnswererQuestionerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MatchedWith"></activity>
+        <activity android:name=".MatchedWith"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

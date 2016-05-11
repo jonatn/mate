@@ -1,7 +1,6 @@
 package com.android.erdem.mate;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -10,13 +9,18 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.util.Base64;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -26,9 +30,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+
 
 import static java.lang.Thread.sleep;
 
@@ -38,6 +40,67 @@ public class WaitActivity extends AppCompatActivity {
     boolean isActive = true;
     boolean isFinished = false;
     boolean isMatched;
+
+    ImageView loading;
+    TextView timer;
+    CountDownTimer countDownTimer;
+
+    public void rotateAnimation ()
+    {
+        RotateAnimation rotateAnimation1 = new RotateAnimation(0.0f, 360.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation1.setInterpolator(new LinearInterpolator());
+        rotateAnimation1.setDuration(16000);
+        rotateAnimation1.setRepeatCount(Animation.INFINITE);
+        loading.startAnimation(rotateAnimation1);
+    }
+
+    public void updateTimer (int secondsLeft)
+    {
+        int hours = secondsLeft / 3600;
+        int minutes = ((secondsLeft - (hours * 3600)) / 60);
+        int seconds = secondsLeft - ((hours * 3600) + (minutes * 60));
+
+        String hourString = Integer.toString(hours);
+        String minString = Integer.toString(minutes);
+        String secString = Integer.toString(seconds);
+
+        if (hours <=9)
+        {
+            hourString = "0" + hourString;
+        }
+        if (minutes <=9)
+        {
+            minString = "0" + minString;
+        }
+        if (seconds <=9)
+        {
+            secString = "0" + secString;
+        }
+
+        timer.setText(hourString+":"+minString+":"+secString);
+    }
+
+    public void controlTimer(View view)
+    {
+        countDownTimer = new CountDownTimer(86400000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                updateTimer((int) millisUntilFinished / 1000);
+            }
+
+            @Override
+            public void onFinish()
+            {
+                //end of countdown
+            }
+        };
+        countDownTimer.start();
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +112,15 @@ public class WaitActivity extends AppCompatActivity {
         actionBar.setSubtitle(null);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.mate_logo_white);
+
+        loading = (ImageView) findViewById(R.id.waitactivity_loading);
+        timer = (TextView) findViewById(R.id.waitactivity_timer);
+        View v = timer;
+        controlTimer(v);
+       //loading.setDrawingCacheEnabled(true);
+        rotateAnimation();
+
+
 
 
         final Handler handler = new Handler() {
@@ -169,6 +241,8 @@ public class WaitActivity extends AppCompatActivity {
         thread = new Thread(runnable);
         thread.start();
     }
+
+
 
     @Override
     public void onStop() {
