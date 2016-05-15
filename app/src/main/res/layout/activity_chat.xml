@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    tools:context="com.android.erdem.mate.ChatActivity">
+
+    <include
+        android:id="@+id/chat_toolbar"
+        layout="@layout/chat_actionbar" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_listView"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/relativeLayout"
+        android:layout_below="@+id/chat_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/relativeLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#B0B0B0"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <EditText
+                android:layout_width="192dp"
+                android:layout_height="50dp"
+                android:id="@+id/chatscreen_send_msg_text"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:background="#ffffff"
+                android:layout_weight="0.90" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Send"
+                android:paddingLeft="10dp"
+                android:gravity="center"
+                android:layout_weight="0.10"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:id="@+id/chatscreen_send" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

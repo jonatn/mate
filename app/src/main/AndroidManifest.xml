@@ -58,8 +58,12 @@
         <activity
             android:name=".AnswererQuestionerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MatchedWith"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".MatchedWith"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ChatTheme">
         </activity>
     </application>
 

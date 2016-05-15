@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:theme="@style/ChatTheme"
+    android:background="#B0B0B0">
+
+<include
+    layout="@layout/chat_actionbar"
+    android:id="@+id/chat_actionbar"/>
+</android.support.v7.widget.Toolbar>

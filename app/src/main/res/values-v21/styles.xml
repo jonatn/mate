@@ -15,4 +15,12 @@
     <item name="android:logo">@mipmap/ic_launcher</item>
     <item name="android:displayOptions">useLogo</item>
     </style>
+
+        <style name="ChatTheme" parent="Theme.AppCompat.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">#B0B0B0</item>
+            <item name="colorPrimaryDark">#B0B0B0</item>
+            <item name="colorAccent">#000000</item>
+            <item name="android:navigationBarColor">#B0B0B0</item>
+        </style>
     </resources>
