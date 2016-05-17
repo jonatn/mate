@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/lyt_container"
     android:background="#333333">
 <!--Actual list(question/answer)-->
@@ -16,31 +16,35 @@
 
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="116.95dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:paddingBottom="50dp"
-            android:paddingTop="50dp"
+                android:paddingBottom="30dp"
+            android:paddingTop="29dp"
             android:textSize="25sp"
                 android:text="Answer"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-                android:background="#000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+                android:background="#333333"
                 android:fontFamily="sans-serif-condensed"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:textAlignment="center"
                 android:id="@+id/txt_data"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="false"
+            android:gravity="center_vertical" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="22.5dp"
+            android:layout_height="22.5dp"
             android:id="@+id/cardgame_arrow"
             android:src="@drawable/cards_arrow"
             android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 
@@ -49,41 +53,33 @@
     <!--The box which appears after swipe-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="116.95dp"
         android:orientation="horizontal"
         android:visibility="gone"
-        android:weightSum="3"
-        android:background="#C6C6C6"
-        android:height="80dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:weightSum="2"
+        android:background="#252525"
+        android:height="80dp">
 
-        <TextView
+        <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/txt_selected"
+            android:src="@drawable/card_tick"
+            android:padding="45dp"
+            android:background="#C8C8C8"
+            android:adjustViewBounds="true"
             android:gravity="center_vertical"
-            android:text="Selected"
-            android:fontFamily="sans-serif-condensed"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:clickable="false"
-            android:layout_weight="2"
-            android:hapticFeedbackEnabled="true"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="1" />
 
-        <TextView
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textSize="20sp"
+            android:layout_height="wrap_content"
             android:id="@+id/txt_undo"
-            android:fontFamily="sans-serif-condensed"
-            android:textStyle="bold"
-            android:text="Cancel"
-            android:clickable="false"
-            android:layout_weight="1"
-            android:textColor="#000000"/>
+            android:padding="47.5dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/card_close"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

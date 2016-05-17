@@ -51,7 +51,7 @@ public class WaitActivity extends AppCompatActivity {
                 Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation1.setInterpolator(new LinearInterpolator());
-        rotateAnimation1.setDuration(16000);
+        rotateAnimation1.setDuration(8000);
         rotateAnimation1.setRepeatCount(Animation.INFINITE);
         loading.startAnimation(rotateAnimation1);
     }

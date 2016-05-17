@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class CardgameActivity extends AppCompatActivity {
     private TextView question;
     // private ImageView avatar;
 
-    private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 3000;
+    private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 7000;
 
     private String getEntry(JSONArray arr, int index) {
         try {
@@ -258,7 +259,13 @@ public class CardgameActivity extends AppCompatActivity {
                                 }
                                 adapter.mDataSet.clear();
 
-                                question.setText(getEntry(ProfileInfo.questions, ProfileInfo.questionnr));
+                                //included - change
+                                String q =(String) getEntry(ProfileInfo.questions, ProfileInfo.questionnr);
+                                q =q.replace(" - ", " _____ ");
+                                question.setText(q);
+                                recyclerView.invalidate();
+                                Log.i("sdf",q);  //used for test
+                                //question.setText(getEntry(ProfileInfo.questions, ProfileInfo.questionnr));
                                 adapter.mDataSet.add(0, getEntry(ProfileInfo.answers1, ProfileInfo.questionnr));
                                 adapter.mDataSet.add(1, getEntry(ProfileInfo.answers2, ProfileInfo.questionnr));
                                 adapter.mDataSet.add(2, getEntry(ProfileInfo.answers3, ProfileInfo.questionnr));
