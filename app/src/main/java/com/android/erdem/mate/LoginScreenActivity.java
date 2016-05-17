@@ -4,6 +4,7 @@ package com.android.erdem.mate;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +29,10 @@ import org.json.JSONObject;
 public class LoginScreenActivity extends AppCompatActivity {
 
     private TextView username, password, signin, signin_facebook, forgotpassword;
-    //add checkbox and forgot your password
+    private CheckBox saveLoginCheckBox;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,18 @@ public class LoginScreenActivity extends AppCompatActivity {
         password.setTransformationMethod(new PasswordTransformationMethod());
         forgotpassword = (TextView) findViewById(R.id.loginscreen_forgot_password_text);
         signin_facebook = (TextView) findViewById(R.id.loginscreen_signinwithfacebook_text);
+        saveLoginCheckBox = (CheckBox) findViewById(R.id.loginscreen_savepassword_checkbox);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor =loginPreferences.edit();
+
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+
+        if(saveLogin == true)
+        {
+         username.setText(loginPreferences.getString("username", ""));
+            password.setText(loginPreferences.getString("password", ""));
+            saveLoginCheckBox.setChecked(true);
+        }
 
         // For DB
         // final EditText etUsername = (EditText) findViewById(R.id.loginscreen_username_text);
@@ -68,6 +85,21 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                                           final String strUsername = username.getText().toString();
                                           final String strPassword = password.getText().toString();
+
+                                          if(saveLoginCheckBox.isChecked())
+                                          {
+                                              loginPrefsEditor.putBoolean("saveLogin",true);
+                                              loginPrefsEditor.putString("username", strUsername);
+                                              loginPrefsEditor.putString("password", strPassword);
+                                              loginPrefsEditor.commit();
+                                          }
+                                          else
+                                          {
+                                              loginPrefsEditor.clear();
+                                              loginPrefsEditor.commit();
+                                          }
+
+
 
                                           // Response received from the server
                                           Response.Listener<String> responseListener = new Response.Listener<String>() {

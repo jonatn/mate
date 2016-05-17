@@ -75,7 +75,7 @@
         android:layout_marginTop="20dp"
         android:textSize="15sp"
         android:background="#333333"
-        android:layout_marginLeft="75sp"
+        android:layout_marginLeft="85sp"
         android:text="Forgot your password?"
         android:textColor="#919191"
         android:id="@+id/loginscreen_forgot_password_text"
