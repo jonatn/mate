@@ -98,7 +98,7 @@ public class CardgameActivity extends AppCompatActivity {
 
         question.setText(this.getEntry(ProfileInfo.questions, ProfileInfo.questionnr));
 
-
+/*
         AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
         String message;
         if (ProfileInfo.isQuestioner)
@@ -110,6 +110,7 @@ public class CardgameActivity extends AppCompatActivity {
                 .setNegativeButton("Continue", null)
                 .create()
                 .show();
+*/
     }
 
 

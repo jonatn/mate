@@ -47,7 +47,7 @@ public class MatchActivity extends AppCompatActivity {
                                      @Override
                                      public void onClick(View v) {
 
-                                         Intent i = new Intent(MatchActivity.this, MatchActivity.class);
+                                         Intent i = new Intent(MatchActivity.this, MatchSelectActivity.class);
                                          startActivity(i);
                                      }
                                  }

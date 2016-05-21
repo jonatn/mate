@@ -86,8 +86,14 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
                         ProfileInfo.answers4 = jsonResponse.getJSONArray("answers4");
                         ProfileInfo.questionnr=0;
 
+                        /*
                         Intent intent = new Intent(MatchSelectActivity.this, CardgameActivity.class);
                         MatchSelectActivity.this.startActivity(intent);
+                        */
+
+                        Intent intent = new Intent(MatchSelectActivity.this, AnswererQuestionerActivity.class);
+                        MatchSelectActivity.this.startActivity(intent);
+
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MatchSelectActivity.this);
                         builder.setMessage("Probably Syntax error in PHP file. Please contact developer.")

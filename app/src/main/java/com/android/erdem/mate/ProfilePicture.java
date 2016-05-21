@@ -86,10 +86,12 @@ public class ProfilePicture extends AppCompatActivity implements View.OnClickLis
                 String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
                 int length = encodedImage.length();
+                /*
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfilePicture.this);
                 builder.setMessage("Number of chars in encoded-Image (Width: "+ image.getWidth() + ", Height: " + image.getHeight() + ") string is " + length)
                         .setNegativeButton("Retry", null)
                         .create().show();
+                        */
 
                 // Prepare Responce Process
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -100,10 +102,15 @@ public class ProfilePicture extends AppCompatActivity implements View.OnClickLis
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success) {
+                                /*
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfilePicture.this);
                                 builder.setMessage("Registration successful")
                                         .setNegativeButton("END DEMO", null)
                                         .create().show();
+                                        */
+                                Intent i = new Intent(ProfilePicture.this, MatchActivity.class);
+                                startActivity(i);
+                                //add intent for match screen !!!!
                             } else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfilePicture.this);
                                 builder.setMessage("Registration failed")

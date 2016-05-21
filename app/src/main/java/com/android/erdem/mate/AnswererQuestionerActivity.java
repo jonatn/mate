@@ -15,7 +15,7 @@ public class AnswererQuestionerActivity extends AppCompatActivity {
 
 
 
-    private void Answerer(View view)
+    private void Answerer()
     {
             text1.setText("You are an ");
             text2.setText("answerer !");
@@ -38,6 +38,18 @@ public class AnswererQuestionerActivity extends AppCompatActivity {
         actionBar.setSubtitle(null);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.drawable.mate_logo_white);
+
+        if(!ProfileInfo.isQuestioner)
+        {
+            Answerer();
+        }
+
+        /*
+                if (ProfileInfo.isQuestioner)
+            message = "Congratulations! You're questioner";
+        else
+            message = "You're answerer";
+         */
 
     }
 }
