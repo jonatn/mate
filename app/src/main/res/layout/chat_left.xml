@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/chat_bubble_left"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="239dp"
-        android:gravity="center"
-        android:paddingBottom="50dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Text left"
-        android:textSize="20sp"
-        android:textColor="#f1c40f"
-        android:id="@+id/chat_msg" />
+    android:layout_height="wrap_content"
+    android:background="@drawable/chat_bubble_left">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Time"
-        android:id="@+id/chat_msg_time"
-        android:textColor="#f1c40f"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="left bubble"
+        android:textColor="#343453"
+        android:id="@+id/chat_msg" />
 </RelativeLayout>
