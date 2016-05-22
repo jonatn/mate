@@ -55,7 +55,7 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
                 break;
         }
 
-        //Intent i = new Intent(MatchSelectActivity.this, CardgameActivity.class);
+       // Intent i = new Intent(MatchSelectActivity.this, AnswererQuestionerActivity.class);
         //startActivity(i);
     }
 

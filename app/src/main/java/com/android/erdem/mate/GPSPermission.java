@@ -39,7 +39,9 @@ public class GPSPermission extends AppCompatActivity{
         {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(GPSPermission.this, MatchSelectActivity.class);
+                //Intent i = new Intent(GPSPermission.this, MatchSelectActivity.class);
+               // startActivity(i);
+                Intent i = new Intent(GPSPermission.this, MatchActivity.class);
                 startActivity(i);
             }
         });

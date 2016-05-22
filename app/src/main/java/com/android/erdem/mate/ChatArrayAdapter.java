@@ -13,6 +13,7 @@ import java.util.List;
 public class ChatArrayAdapter extends ArrayAdapter<ChatMessage> {
 
     private TextView chatText;
+    private TextView time;
     private List<ChatMessage> chatMessageList = new ArrayList<ChatMessage>();
     private Context context;
 
@@ -50,7 +51,9 @@ public class ChatArrayAdapter extends ArrayAdapter<ChatMessage> {
 //
 
         TextView chatText = (TextView) v.findViewById(R.id.chat_msg);
+        TextView time = (TextView) v.findViewById(R.id.chat_time);
        chatText.setText(chatMessageObj.message);
+        time.setText(chatMessageObj.time);
         return v;
     }
 }
