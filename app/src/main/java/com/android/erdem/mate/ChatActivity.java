@@ -2,8 +2,10 @@ package com.android.erdem.mate;
 
 
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -23,7 +25,7 @@ public class ChatActivity extends AppCompatActivity {
     private TextView time;
     private Toolbar toolbar;
 
-    public boolean side = false;
+    public boolean side = false; //side false = left bubble
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class ChatActivity extends AppCompatActivity {
         message = (EditText)findViewById(R.id.chatscreen_send_msg_text);
         send = (TextView)findViewById(R.id.chatscreen_send);
         toolbar = (Toolbar) findViewById(R.id.chat_actionbar);
+        listView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 
         setSupportActionBar(toolbar);//setting toolbar as actionbar
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,9 +57,23 @@ public class ChatActivity extends AppCompatActivity {
                 listView.setSelection(chatArrayAdapter.getCount() - 1);
             }
         });
-
-        chatArrayAdapter.add(new ChatMessage(side,"Test")); // for test messages
-        chatArrayAdapter.add(new ChatMessage(!side,"Test"));
+/*
+        Handler hand = new Handler();
+        hand.postDelayed(new Runnable() {
+            public void run() {
+                chatArrayAdapter.add(new ChatMessage(!side,"Test"));
+                // Actions to do after 10 seconds
+            }
+        }, 10000);
+        */
+        chatArrayAdapter.add(new ChatMessage(side,"Test adasdasfasfa" +
+                "aafasfasfasfasfasfasf " +
+                "asfasfasfasfasfafafsafafafaf " +
+                "asfafasfafafasfasf")); // for test messages
+        chatArrayAdapter.add(new ChatMessage(!side,"Test adasdasfasfa" +
+                "aafasfasfasfasfasfasf " +
+                "asfasfasfasfasfafafsafafafaf " +
+                "asfafasfafafasfasf"));
     }
     private boolean sendChatMessage() {
         chatArrayAdapter.add(new ChatMessage(side, message.getText().toString()));

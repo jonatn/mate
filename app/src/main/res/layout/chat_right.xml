@@ -15,8 +15,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="end"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="right bubble"
             android:textColor="#343453"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="start"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#343453"
             android:text="Time"

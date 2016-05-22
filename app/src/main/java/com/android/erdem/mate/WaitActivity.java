@@ -120,6 +120,14 @@ public class WaitActivity extends AppCompatActivity {
        //loading.setDrawingCacheEnabled(true);
         rotateAnimation();
 
+        Handler hand = new Handler();
+        hand.postDelayed(new Runnable() {
+            public void run() {
+                Intent i = new Intent(WaitActivity.this, MatchedWith.class);
+                startActivity(i);
+                // Actions to do after 10 seconds
+            }
+        }, 10000);
 
 
 
@@ -135,8 +143,7 @@ public class WaitActivity extends AppCompatActivity {
                         .create()
                         .show();*/
 
-                Intent intent;
-
+               Intent intent;
 
 
                 String notific;

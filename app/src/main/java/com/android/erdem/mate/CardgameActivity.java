@@ -105,11 +105,12 @@ public class CardgameActivity extends AppCompatActivity {
             message = "Congratulations! You're questioner";
         else
             message = "You're answerer";
-
+/*
         builder.setMessage(message)
                 .setNegativeButton("Continue", null)
                 .create()
                 .show();
+                */
     }
 
 
@@ -220,6 +221,12 @@ public class CardgameActivity extends AppCompatActivity {
 
                                 ProfileInfo.questionnr++;
                                 if (ProfileInfo.questionnr >= 5) {
+
+                                    //ignore response, just go to wait activity for video.
+                                    Intent intent = new Intent(CardgameActivity.this, WaitActivity.class);
+                                    CardgameActivity.this.startActivity(intent);
+
+
                                     // Response received from the server
                                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                                         @Override
@@ -227,6 +234,7 @@ public class CardgameActivity extends AppCompatActivity {
                                             try {
                                                 JSONObject jsonResponse = new JSONObject(response);
                                                 boolean success = jsonResponse.getBoolean("success");
+                                                /*
 
                                                 if (success) {
 
@@ -239,7 +247,7 @@ public class CardgameActivity extends AppCompatActivity {
                                                             .create()
                                                             .show();
                                                 }
-
+                                                */
                                             } catch (JSONException e) {
                                                 AlertDialog.Builder builder = new AlertDialog.Builder(CardgameActivity.this);
                                                 builder.setMessage("Server Connection Failed. Have another try or contact developer.")

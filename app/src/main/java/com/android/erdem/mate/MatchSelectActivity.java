@@ -55,8 +55,6 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
                 break;
         }
 
-       // Intent i = new Intent(MatchSelectActivity.this, AnswererQuestionerActivity.class);
-        //startActivity(i);
     }
 
     // Input: (m)ale, (f)emale, (u)ndefined
@@ -86,10 +84,10 @@ public class MatchSelectActivity extends AppCompatActivity  implements View.OnCl
                         ProfileInfo.answers4 = jsonResponse.getJSONArray("answers4");
                         ProfileInfo.questionnr=0;
 
-                        /*
-                        Intent intent = new Intent(MatchSelectActivity.this, CardgameActivity.class);
-                        MatchSelectActivity.this.startActivity(intent);
-                        */
+
+                        //Intent intent = new Intent(MatchSelectActivity.this, CardgameActivity.class);
+                        //MatchSelectActivity.this.startActivity(intent);
+
 
                         Intent intent = new Intent(MatchSelectActivity.this, AnswererQuestionerActivity.class);
                         MatchSelectActivity.this.startActivity(intent);
