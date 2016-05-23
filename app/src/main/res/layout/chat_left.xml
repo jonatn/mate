@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="end|bottom"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#343453"
             android:text="Time"

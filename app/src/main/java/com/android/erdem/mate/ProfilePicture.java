@@ -86,6 +86,10 @@ public class ProfilePicture extends AppCompatActivity implements View.OnClickLis
                 String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
                 int length = encodedImage.length();
+
+                intent = new Intent(ProfilePicture.this, MatchSelectActivity.class);
+                startActivity(intent);
+
                 /*
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfilePicture.this);
                 builder.setMessage("Number of chars in encoded-Image (Width: "+ image.getWidth() + ", Height: " + image.getHeight() + ") string is " + length)

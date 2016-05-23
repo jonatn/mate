@@ -263,7 +263,7 @@ public class CardgameActivity extends AppCompatActivity {
                                     RequestQueue queue = Volley.newRequestQueue(CardgameActivity.this);
                                     queue.add(submitAnswersRequest);
 
-
+                                    return;
                                 }
                                 adapter.mDataSet.clear();
 

@@ -48,6 +48,14 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendChatMessage();
+                Handler hand = new Handler();
+                hand.postDelayed(new Runnable() {
+                    public void run() {
+                        chatArrayAdapter.add(new ChatMessage(!side,"Haha :D \nWhat a BEAUTIFUL MIND ;)"));
+                        // Actions to do after 10 seconds
+                    }
+                }, 5000);
+
             }
         });
         chatArrayAdapter.registerDataSetObserver(new DataSetObserver() {
@@ -57,15 +65,9 @@ public class ChatActivity extends AppCompatActivity {
                 listView.setSelection(chatArrayAdapter.getCount() - 1);
             }
         });
-/*
-        Handler hand = new Handler();
-        hand.postDelayed(new Runnable() {
-            public void run() {
-                chatArrayAdapter.add(new ChatMessage(!side,"Test"));
-                // Actions to do after 10 seconds
-            }
-        }, 10000);
-        */
+
+
+        /*
         chatArrayAdapter.add(new ChatMessage(side,"Test adasdasfasfa" +
                 "aafasfasfasfasfasfasf " +
                 "asfasfasfasfasfafafsafafafaf " +
@@ -74,6 +76,7 @@ public class ChatActivity extends AppCompatActivity {
                 "aafasfasfasfasfasfasf " +
                 "asfasfasfasfasfafafsafafafaf " +
                 "asfafasfafafasfasf"));
+                */
     }
     private boolean sendChatMessage() {
         chatArrayAdapter.add(new ChatMessage(side, message.getText().toString()));

@@ -40,6 +40,7 @@ public class AnswererQuestionerActivity extends AppCompatActivity {
         play = (TextView) findViewById(R.id.answerer_questioner_play);
         image = (ImageView) findViewById(R.id.answerer_questioner_avatar);
 
+        image.setImageBitmap(ProfileInfo.image);
         //if that person is answerer than call Answerer function, else no need to do anything.
         //also set image according to that person's profile image.
 

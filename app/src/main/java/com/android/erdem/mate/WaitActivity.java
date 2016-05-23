@@ -84,7 +84,7 @@ public class WaitActivity extends AppCompatActivity {
 
     public void controlTimer(View view)
     {
-        countDownTimer = new CountDownTimer(86400000,1000) {
+        countDownTimer = new CountDownTimer(86260000,1000) {
             @Override
             public void onTick(long millisUntilFinished)
             {

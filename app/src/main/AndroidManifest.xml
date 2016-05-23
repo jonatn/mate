@@ -13,7 +13,7 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/mate_icon"
         android:label="Mate"
         android:largeHeap="true"
         android:logo="@drawable/mate_logo_white"

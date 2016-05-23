@@ -118,9 +118,9 @@ public class LoginScreenActivity extends AppCompatActivity {
                                                           ProfileInfo.age = age;
                                                           ProfileInfo.sex = jsonResponse.getString("sex");
 
-                                                          /*String strImage = jsonResponse.getString("image");
+                                                          String strImage = jsonResponse.getString("image");
                                                           byte[] imageBytes = Base64.decode(strImage, Base64.DEFAULT);
-                                                          ProfileInfo.image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);*/
+                                                          ProfileInfo.image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
 
                                                                   Toast.makeText(LoginScreenActivity.this, "Welcome " + name + "!", Toast.LENGTH_LONG).show();
 
